@@ -16,5 +16,5 @@
         <module>LKJAPI-interface</module>
         <module>LKJAPI-order</module>
     </modules>
-
+    <packaging>pom</packaging>
 </project>

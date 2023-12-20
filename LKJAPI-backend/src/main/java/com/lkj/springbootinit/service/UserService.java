@@ -1,13 +1,14 @@
 package com.lkj.springbootinit.service;
 
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.lkj.apicommon.entity.User;
 import com.lkj.springbootinit.model.dto.user.UserQueryRequest;
 import com.lkj.springbootinit.model.dto.user.UserUpdateRequest;
 import com.lkj.springbootinit.model.vo.LoginUserVO;
 import com.lkj.springbootinit.model.vo.UserDevKeyVO;
 import com.lkj.springbootinit.model.vo.UserVO;
-import com.lkj.apicommon.entity.User;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -55,7 +56,7 @@ public interface UserService extends IService<User> {
      * @param request
      * @return 脱敏后的用户信息
      */
-    LoginUserVO userLogin(String userAccount, String userPassword, HttpServletRequest request);
+    LoginUserVO userLogin(String userAccount, String userPassword, HttpServletRequest request,HttpServletResponse response);
 
     /**
      * 使用邮箱登录(后续会改造成使用手机号登录)
@@ -74,14 +75,6 @@ public interface UserService extends IService<User> {
      * @return
      */
     User getLoginUser(HttpServletRequest request);
-
-    /**
-     * 获取当前登录用户（允许未登录）
-     *
-     * @param request
-     * @return
-     */
-    User getLoginUserPermitNull(HttpServletRequest request);
 
     /**
      * 是否为管理员

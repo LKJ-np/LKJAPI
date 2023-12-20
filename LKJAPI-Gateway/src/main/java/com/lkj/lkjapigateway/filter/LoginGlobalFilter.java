@@ -33,7 +33,6 @@ public class LoginGlobalFilter implements GlobalFilter, Ordered {
             "/api/user/login", "/api/user/loginBySms", "/api/user/register","/api/user/email/register", "/api/user/smsCaptcha",
             "/api/user/getCaptcha", "/api/interface/**","/api/third/alipay/**","/api/interfaceInfo/sdk");
 
-
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 

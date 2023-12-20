@@ -1,10 +1,14 @@
 package com.lkj.springbootinit.controller;
 
-import org.springframework.core.io.ClassPathResource;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.google.gson.Gson;
+import com.lkj.apicommon.common.*;
+import com.lkj.apicommon.entity.InterfaceCharging;
+import com.lkj.apicommon.entity.InterfaceInfo;
+import com.lkj.apicommon.entity.User;
 import com.lkj.apicommon.entity.UserInterfaceInfo;
+import com.lkj.apicommon.exception.BusinessException;
 import com.lkj.springbootinit.annotation.AuthCheck;
 import com.lkj.springbootinit.constant.CommonConstant;
 import com.lkj.springbootinit.model.dto.interfaceinfo.InterfaceInfoAddRequest;
@@ -12,16 +16,15 @@ import com.lkj.springbootinit.model.dto.interfaceinfo.InterfaceInfoInvokeRequest
 import com.lkj.springbootinit.model.dto.interfaceinfo.InterfaceInfoQueryRequest;
 import com.lkj.springbootinit.model.dto.interfaceinfo.InterfaceInfoUpdateRequest;
 import com.lkj.springbootinit.model.enums.InterfaceInfoStateEnum;
+import com.lkj.springbootinit.model.vo.InterfaceInfoVo;
+import com.lkj.springbootinit.service.InterfaceChargingService;
 import com.lkj.springbootinit.service.InterfaceInfoService;
 import com.lkj.springbootinit.service.UserInterfaceInfoService;
 import com.lkj.springbootinit.service.UserService;
-import com.lkj.apicommon.common.*;
-import com.lkj.apicommon.exception.BusinessException;
-import com.lkj.apicommon.entity.InterfaceInfo;
-import com.lkj.apicommon.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -51,6 +54,14 @@ public class InterfaceInfoController {
     @Resource
     private UserInterfaceInfoService userInterfaceInfoService;
 
+    @Resource
+    private InterfaceChargingService interfaceChargingService;
+
+    private static final String GATEWAY_HOST="http://localhost:8090";
+
+    private static final String RESTFUL_INTERFACE = "restful";
+
+    private static final Gson gson = new Gson();
 
     /**
      * 创建
@@ -144,12 +155,35 @@ public class InterfaceInfoController {
      * @return
      */
     @GetMapping("/get")
-    public BaseResponse<InterfaceInfo> getInterfaceInfoById(long id) {
+    public BaseResponse<InterfaceInfoVo> getInterfaceInfoById(long id,HttpServletRequest request) {
         if (id <= 0) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
+        Long userId = JwtUtils.getUserIdByToken(request);
+        if (userId == null){
+            throw new BusinessException(ErrorCode.NOT_LOGIN_ERROR);
+        }
+
         InterfaceInfo interfaceInfo = interfaceInfoService.getById(id);
-        return ResultUtils.success(interfaceInfo);
+        InterfaceCharging interfaceCharging = interfaceChargingService.getOne(new QueryWrapper<InterfaceCharging>().eq("interfaceId", id));
+        InterfaceInfoVo interfaceInfoVO = new InterfaceInfoVo();
+        BeanUtils.copyProperties(interfaceInfo, interfaceInfoVO);
+        if (interfaceCharging != null) {
+            //获取付费剩余调用次数
+            interfaceInfoVO.setCharging(interfaceCharging.getCharging());
+//            interfaceInfoVO.setAvailablePieces(interfaceCharging.getAvailablePieces());
+            interfaceInfoVO.setChargingId(interfaceCharging.getId());
+        }
+        //获取免费剩余调用次数
+        QueryWrapper<UserInterfaceInfo> userInterfaceInfoQueryWrapper = new QueryWrapper<>();
+        userInterfaceInfoQueryWrapper.eq("userId",userId);
+        userInterfaceInfoQueryWrapper.eq("interfaceInfoId", id);
+        UserInterfaceInfo userInterfaceInfo = userInterfaceInfoService.getOne(userInterfaceInfoQueryWrapper);
+        if (userInterfaceInfo!=null){
+            interfaceInfoVO.setAvailablePieces(userInterfaceInfo.getLeftNum().toString());
+        }
+
+        return ResultUtils.success(interfaceInfoVO);
     }
 
     /**
@@ -201,7 +235,7 @@ public class InterfaceInfoController {
         }
         //查询 接口描述信息
         QueryWrapper<InterfaceInfo> queryWrapper = new QueryWrapper<>(interfaceInfoQuery);
-        queryWrapper.like(StringUtils.isNotBlank(description), "description", description);
+        queryWrapper.like(StringUtils.isNotBlank(description), "content", description);
         queryWrapper.orderBy(StringUtils.isNotBlank(sortField),
                 sortOrder.equals(CommonConstant.SORT_ORDER_ASC), sortField);
         Page<InterfaceInfo> interfaceInfoPage = interfaceInfoService.page(new Page<>(current, size), queryWrapper);

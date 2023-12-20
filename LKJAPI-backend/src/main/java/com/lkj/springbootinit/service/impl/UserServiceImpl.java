@@ -263,7 +263,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
      * @return
      */
     @Override
-    public LoginUserVO userLogin(String userAccount, String userPassword, HttpServletRequest request) {
+    public LoginUserVO userLogin(String userAccount, String userPassword, HttpServletRequest request,HttpServletResponse response) {
         // 1. 校验
         if (StringUtils.isAnyBlank(userAccount, userPassword)) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR, "参数为空");
@@ -287,7 +287,22 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             throw new BusinessException(ErrorCode.PARAMS_ERROR, "用户不存在或密码错误");
         }
         // 3. 记录用户的登录态
-        request.getSession().setAttribute(USER_LOGIN_STATE, user);
+        return setLoginUser(response, user);
+    }
+
+    /**
+     * 记录用户的登录态，并返回脱敏后的登录用户
+     * @param response
+     * @param user
+     * @return
+     */
+    private LoginUserVO setLoginUser(HttpServletResponse response, User user) {
+        String token = JwtUtils.getJwtToken(user.getId(), user.getUserName());
+        Cookie cookie = new Cookie("token", token);
+        cookie.setPath("/");
+        response.addCookie(cookie);
+        String userJson = gson.toJson(user);
+        stringRedisTemplate.opsForValue().set(USER_LOGIN_STATE + user.getId(), userJson, JwtUtils.EXPIRE, TimeUnit.MILLISECONDS);
         return this.getLoginUserVO(user);
     }
 
@@ -315,39 +330,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return setLoginUser(response, user);
     }
 
-
-//    @Override
-//    public LoginUserVO userLoginByMpOpen(WxOAuth2UserInfo wxOAuth2UserInfo, HttpServletRequest request) {
-//        String unionId = wxOAuth2UserInfo.getUnionId();
-//        String mpOpenId = wxOAuth2UserInfo.getOpenid();
-//        // 单机锁
-//        synchronized (unionId.intern()) {
-//            // 查询用户是否已存在
-//            QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-//            queryWrapper.eq("unionId", unionId);
-//            User user = this.getOne(queryWrapper);
-//            // 被封号，禁止登录
-//            if (user != null && UserRoleEnum.BAN.getValue().equals(user.getUserRole())) {
-//                throw new BusinessException(ErrorCode.FORBIDDEN_ERROR, "该用户已被封，禁止登录");
-//            }
-//            // 用户不存在则创建
-//            if (user == null) {
-//                user = new User();
-////                user.setUnionId(unionId);
-////                user.setMpOpenId(mpOpenId);
-//                user.setUserAvatar(wxOAuth2UserInfo.getHeadImgUrl());
-//                user.setUserName(wxOAuth2UserInfo.getNickname());
-//                boolean result = this.save(user);
-//                if (!result) {
-//                    throw new BusinessException(ErrorCode.SYSTEM_ERROR, "登录失败");
-//                }
-//            }
-//            // 记录用户的登录态
-//            request.getSession().setAttribute(USER_LOGIN_STATE, user);
-//            return getLoginUserVO(user);
-//        }
-//    }
-
     /**
      * 获取当前登录用户
      *
@@ -357,37 +339,17 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public User getLoginUser(HttpServletRequest request) {
         // 先判断是否已登录
-        Object userObj = request.getSession().getAttribute(USER_LOGIN_STATE);
-        User currentUser = (User) userObj;
-        if (currentUser == null || currentUser.getId() == null) {
+        Long userId = JwtUtils.getUserIdByToken(request);
+        if (userId == null){
             throw new BusinessException(ErrorCode.NOT_LOGIN_ERROR);
         }
-        // 从数据库查询（追求性能的话可以注释，直接走缓存）
-        long userId = currentUser.getId();
-        currentUser = this.getById(userId);
-        if (currentUser == null) {
-            throw new BusinessException(ErrorCode.NOT_LOGIN_ERROR);
-        }
-        return currentUser;
-    }
 
-    /**
-     * 获取当前登录用户（允许未登录）
-     *
-     * @param request
-     * @return
-     */
-    @Override
-    public User getLoginUserPermitNull(HttpServletRequest request) {
-        // 先判断是否已登录
-        Object userObj = request.getSession().getAttribute(USER_LOGIN_STATE);
-        User currentUser = (User) userObj;
-        if (currentUser == null || currentUser.getId() == null) {
-            return null;
+        String userJson = stringRedisTemplate.opsForValue().get(USER_LOGIN_STATE+userId);
+        User user = gson.fromJson(userJson, User.class);
+        if (user == null){
+            throw new BusinessException(ErrorCode.NOT_LOGIN_ERROR);
         }
-        // 从数据库查询（追求性能的话可以注释，直接走缓存）
-        long userId = currentUser.getId();
-        return this.getById(userId);
+        return user;
     }
 
     /**
@@ -643,19 +605,4 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return true;
     }
 
-    /**
-     * 记录用户的登录态，并返回脱敏后的登录用户
-     * @param response
-     * @param user
-     * @return
-     */
-    private LoginUserVO setLoginUser(HttpServletResponse response, User user) {
-        String token = JwtUtils.getJwtToken(user.getId(), user.getUserName());
-        Cookie cookie = new Cookie("token", token);
-        cookie.setPath("/");
-        response.addCookie(cookie);
-        String userJson = gson.toJson(user);
-        stringRedisTemplate.opsForValue().set(USER_LOGIN_STATE + user.getId(), userJson, JwtUtils.EXPIRE, TimeUnit.MILLISECONDS);
-        return this.getLoginUserVO(user);
-    }
 }

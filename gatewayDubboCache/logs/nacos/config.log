@@ -1085,3 +1085,11 @@ com.alibaba.nacos.api.exception.NacosException: Client not connected, current st
 2023-12-20 20:50:44.265 INFO [com.alibaba.nacos.client.remote.worker:c.a.n.c.c.i.ClientWorker] [cff9e965-5404-4c7a-b39a-adeb123c5514_config-0] Connected,notify listen context...
 2023-12-20 20:50:44.376 INFO [com.alibaba.nacos.client.remote.worker:c.a.n.c.c.i.ClientWorker] [cff9e965-5404-4c7a-b39a-adeb123c5514_config-0] DisConnected,clear listen context...
 2023-12-20 20:50:44.376 INFO [com.alibaba.nacos.client.remote.worker:c.a.n.c.c.i.ClientWorker] [cff9e965-5404-4c7a-b39a-adeb123c5514_config-0] Connected,notify listen context...
+2023-12-20 21:04:35.524 INFO [DubboShutdownHook:c.a.n.c.a.r.i.CredentialWatcher] [null] CredentialWatcher is stopped
+2023-12-20 21:04:35.524 INFO [DubboShutdownHook:c.a.n.c.a.r.i.CredentialService] [null] CredentialService is freed
+2023-12-20 21:04:37.617 INFO [DubboShutdownHook:c.a.n.c.c.i.ClientWorker] com.alibaba.nacos.client.config.impl.ClientWorker do shutdown begin
+2023-12-20 21:04:37.617 INFO [DubboShutdownHook:c.a.n.c.c.i.ClientWorker] Trying to shutdown transport client com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient@274f6cab
+2023-12-20 21:04:37.617 INFO [DubboShutdownHook:c.a.n.c.c.i.ClientWorker] Trying to shutdown rpc client 8fad31d7-4189-4ce3-a193-195e49a7a7ff_config-0
+2023-12-20 21:04:37.618 INFO [DubboShutdownHook:c.a.n.c.c.i.ClientWorker] Remove rpc client 8fad31d7-4189-4ce3-a193-195e49a7a7ff_config-0
+2023-12-20 21:04:37.618 INFO [DubboShutdownHook:c.a.n.c.c.i.ClientWorker] Shutdown executor java.util.concurrent.ScheduledThreadPoolExecutor@55574c34[Running, pool size = 32, active threads = 1, queued tasks = 1, completed tasks = 4776]
+2023-12-20 21:04:37.619 INFO [DubboShutdownHook:c.a.n.c.c.i.ClientWorker] com.alibaba.nacos.client.config.impl.ClientWorker do shutdown stop

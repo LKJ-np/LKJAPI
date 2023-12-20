@@ -5755,3 +5755,21 @@ app_requested
 2023-12-20 20:54:08.390 INFO [nacos-grpc-client-executor-localhost-4956:c.a.n.c.r.client] [dc1f4ca8-c964-4ffe-97b7-340fa7b7b68e] Ack server push request, request = NotifySubscriberRequest, requestId = 219
 2023-12-20 20:54:08.607 INFO [nacos-grpc-client-executor-localhost-4700:c.a.n.c.r.client] [905f281f-c001-41cb-85c5-7d50f53329ed] Receive server push request, request = NotifySubscriberRequest, requestId = 223
 2023-12-20 20:54:08.608 INFO [nacos-grpc-client-executor-localhost-4700:c.a.n.c.r.client] [905f281f-c001-41cb-85c5-7d50f53329ed] Ack server push request, request = NotifySubscriberRequest, requestId = 223
+2023-12-20 21:04:21.164 INFO [nacos-grpc-client-executor-localhost-4821:c.a.n.c.r.client] [905f281f-c001-41cb-85c5-7d50f53329ed] Receive server push request, request = NotifySubscriberRequest, requestId = 227
+2023-12-20 21:04:21.164 INFO [nacos-grpc-client-executor-localhost-5088:c.a.n.c.r.client] [dc1f4ca8-c964-4ffe-97b7-340fa7b7b68e] Receive server push request, request = NotifySubscriberRequest, requestId = 224
+2023-12-20 21:04:21.165 INFO [nacos-grpc-client-executor-localhost-5088:c.a.n.c.r.client] [dc1f4ca8-c964-4ffe-97b7-340fa7b7b68e] Ack server push request, request = NotifySubscriberRequest, requestId = 224
+2023-12-20 21:04:21.165 INFO [nacos-grpc-client-executor-localhost-4821:c.a.n.c.r.client] [905f281f-c001-41cb-85c5-7d50f53329ed] Ack server push request, request = NotifySubscriberRequest, requestId = 227
+2023-12-20 21:04:21.707 INFO [nacos-grpc-client-executor-127.0.0.1-4820:c.a.n.c.r.client] [eef49523-e191-4013-8f44-6be9fe108325] Receive server push request, request = NotifySubscriberRequest, requestId = 228
+2023-12-20 21:04:21.707 INFO [nacos-grpc-client-executor-127.0.0.1-4820:c.a.n.c.r.client] [eef49523-e191-4013-8f44-6be9fe108325] Ack server push request, request = NotifySubscriberRequest, requestId = 228
+2023-12-20 21:04:35.524 INFO [DubboShutdownHook:c.a.n.c.r.client] Shutdown rpc client, set status to shutdown
+2023-12-20 21:04:35.524 INFO [DubboShutdownHook:c.a.n.c.r.client] Shutdown client event executor java.util.concurrent.ScheduledThreadPoolExecutor@55fb8ec[Running, pool size = 2, active threads = 2, queued tasks = 0, completed tasks = 0]
+2023-12-20 21:04:35.524 INFO [DubboShutdownHook:c.a.n.c.r.client] Close current connection 1703076642220_127.0.0.1_62534
+2023-12-20 21:04:35.524 INFO [DubboShutdownHook:c.a.n.c.r.c.g.GrpcClient] Shutdown grpc executor java.util.concurrent.ThreadPoolExecutor@6e45934d[Running, pool size = 2, active threads = 0, queued tasks = 0, completed tasks = 4824]
+2023-12-20 21:04:35.539 INFO [SpringApplicationShutdownHook:c.a.n.c.r.client] Shutdown rpc client, set status to shutdown
+2023-12-20 21:04:35.539 INFO [SpringApplicationShutdownHook:c.a.n.c.r.client] Shutdown client event executor java.util.concurrent.ScheduledThreadPoolExecutor@1dcfa771[Running, pool size = 2, active threads = 2, queued tasks = 0, completed tasks = 0]
+2023-12-20 21:04:35.539 INFO [SpringApplicationShutdownHook:c.a.n.c.r.client] Close current connection 1703076644271_127.0.0.1_62545
+2023-12-20 21:04:35.539 INFO [SpringApplicationShutdownHook:c.a.n.c.r.c.g.GrpcClient] Shutdown grpc executor java.util.concurrent.ThreadPoolExecutor@2deb8764[Running, pool size = 3, active threads = 0, queued tasks = 0, completed tasks = 4824]
+2023-12-20 21:04:37.617 INFO [DubboShutdownHook:c.a.n.c.r.client] Shutdown rpc client, set status to shutdown
+2023-12-20 21:04:37.617 INFO [DubboShutdownHook:c.a.n.c.r.client] Shutdown client event executor java.util.concurrent.ScheduledThreadPoolExecutor@267aae80[Running, pool size = 2, active threads = 2, queued tasks = 0, completed tasks = 0]
+2023-12-20 21:04:37.617 INFO [DubboShutdownHook:c.a.n.c.r.client] Close current connection 1703076642221_127.0.0.1_62538
+2023-12-20 21:04:37.618 INFO [DubboShutdownHook:c.a.n.c.r.c.g.GrpcClient] Shutdown grpc executor java.util.concurrent.ThreadPoolExecutor@2fabfc07[Running, pool size = 2, active threads = 0, queued tasks = 0, completed tasks = 4838]

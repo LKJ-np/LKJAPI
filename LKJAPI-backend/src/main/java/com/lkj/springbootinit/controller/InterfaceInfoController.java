@@ -64,22 +64,25 @@ public class InterfaceInfoController {
     private static final Gson gson = new Gson();
 
     /**
-     * 创建
-     *
+     * 添加接口
      * @param interfaceInfoAddRequest
      * @param request
      * @return
      */
     @PostMapping("/add")
     public BaseResponse<Long> addInterfaceInfo(@RequestBody InterfaceInfoAddRequest interfaceInfoAddRequest, HttpServletRequest request) {
+        //参数不为空
         if (interfaceInfoAddRequest == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
+        //创建一个接口对象
         InterfaceInfo interfaceInfo = new InterfaceInfo();
         BeanUtils.copyProperties(interfaceInfoAddRequest, interfaceInfo);
-        // 校验
+        // 校验接口是否存在
         interfaceInfoService.validInterfaceInfo(interfaceInfo, true);
+        //获取当前登录用户信息
         User loginUser = userService.getLoginUser(request);
+        //将创建者id放入接口对象的创建者id
         interfaceInfo.setUserId(loginUser.getId());
         boolean result = interfaceInfoService.save(interfaceInfo);
         if (!result) {
@@ -90,8 +93,7 @@ public class InterfaceInfoController {
     }
 
     /**
-     * 删除
-     *
+     * 删除接口
      * @param deleteRequest
      * @param request
      * @return
@@ -108,7 +110,7 @@ public class InterfaceInfoController {
         if (oldInterfaceInfo == null) {
             throw new BusinessException(ErrorCode.NOT_FOUND_ERROR);
         }
-        // 仅本人或管理员可删除
+        // 仅创建者或管理员可删除
         if (!oldInterfaceInfo.getUserId().equals(user.getId()) && !userService.isAdmin(request)) {
             throw new BusinessException(ErrorCode.NO_AUTH_ERROR);
         }
@@ -117,8 +119,7 @@ public class InterfaceInfoController {
     }
 
     /**
-     * 更新
-     *
+     * 更新接口
      * @param interfaceInfoUpdateRequest
      * @param request
      * @return
@@ -149,8 +150,7 @@ public class InterfaceInfoController {
     }
 
     /**
-     * 根据 id 获取
-     *
+     * 根据 id 获取接口
      * @param id
      * @return
      */
@@ -171,7 +171,7 @@ public class InterfaceInfoController {
         if (interfaceCharging != null) {
             //获取付费剩余调用次数
             interfaceInfoVO.setCharging(interfaceCharging.getCharging());
-//            interfaceInfoVO.setAvailablePieces(interfaceCharging.getAvailablePieces());
+            //interfaceInfoVO.setAvailablePieces(interfaceCharging.getAvailablePieces());
             interfaceInfoVO.setChargingId(interfaceCharging.getId());
         }
         //获取免费剩余调用次数
@@ -182,13 +182,11 @@ public class InterfaceInfoController {
         if (userInterfaceInfo!=null){
             interfaceInfoVO.setAvailablePieces(userInterfaceInfo.getLeftNum().toString());
         }
-
         return ResultUtils.success(interfaceInfoVO);
     }
 
     /**
      * 获取列表（仅管理员可使用）
-     *
      * @param interfaceInfoQueryRequest
      * @return
      */
@@ -205,8 +203,7 @@ public class InterfaceInfoController {
     }
 
     /**
-     * 分页获取列表
-     *
+     * 分页获取接口列表
      * @param interfaceInfoQueryRequest
      * @param request
      * @return
@@ -285,6 +282,15 @@ public class InterfaceInfoController {
 
     }
 
+    /**
+     * 远程调用接口
+     * @param classPath
+     * @param methodName
+     * @param userRequestParams
+     * @param accessKey
+     * @param secretKey
+     * @return
+     */
     private Object invokeInterfaceInfo(String classPath, String methodName, String userRequestParams,
                                        String accessKey, String secretKey) {
         try {
@@ -346,8 +352,7 @@ public class InterfaceInfoController {
 
 
     /**
-     * 测试调用
-     *
+     * 在线调用接口
      * @param interfaceInfoInvokeRequest
      * @param request
      * @return
@@ -375,8 +380,9 @@ public class InterfaceInfoController {
         userInterfaceInfoQueryWrapper.eq("interfaceInfoId", id);
         UserInterfaceInfo userInterfaceInfo = userInterfaceInfoService.getOne(userInterfaceInfoQueryWrapper);
         if (userInterfaceInfo == null){
-            throw new BusinessException(ErrorCode.OPERATION_ERROR, "调用次数不足！");
+            throw new BusinessException(ErrorCode.OPERATION_ERROR, "用户不存在！");
         }
+        //获得此用户调用次数
         int leftNum = userInterfaceInfo.getLeftNum();
         if(leftNum <= 0){
             throw new BusinessException(ErrorCode.OPERATION_ERROR, "调用次数不足！");

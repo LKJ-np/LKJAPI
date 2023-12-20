@@ -47,6 +47,7 @@ public class LoginGlobalFilter implements GlobalFilter, Ordered {
         }
 
         //登录过滤
+        //获取请求的url路径
         String path = request.getPath().toString();
         //判断请求路径是否需要登录
         List<Boolean> collect = NOT_LOGIN_PATH.stream().map(notLoginPath -> {

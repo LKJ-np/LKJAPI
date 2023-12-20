@@ -1,0 +1,41 @@
+
+g
+java:S1104"QMake EMAIL a static final constant or non-public and provide accessors if needed.(‰„ÿ
+f
+java:S1104"PMake HOST a static final constant or non-public and provide accessors if needed.(‹³ˆá
+f
+java:S1104"PMake PORT a static final constant or non-public and provide accessors if needed.(©¨¨×
+j
+java:S1104"TMake PASSWORD a static final constant or non-public and provide accessors if needed.(°Ş°é
+A
+java:S1444"+Make this "public static EMAIL" field final(‰„ÿ
+@
+java:S1444"*Make this "public static HOST" field final(‹³ˆá
+@
+java:S1444"*Make this "public static PORT" field final(©¨¨×
+D
+java:S1444".Make this "public static PASSWORD" field final(°Ş°é
+f
+java:S3008"PRename this field "EMAIL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰„ÿ
+e
+java:S3008"ORename this field "HOST" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹³ˆá
+e
+java:S3008"ORename this field "PORT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©¨¨×
+i
+java:S3008"SRename this field "PASSWORD" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°Ş°é
+d
+java:S1845"NRename field "EMAIL" to prevent any misunderstanding/clash with field "email".(‰„ÿ
+b
+java:S1845"LRename field "HOST" to prevent any misunderstanding/clash with field "host".(‹³ˆá
+b
+java:S1845"LRename field "PORT" to prevent any misunderstanding/clash with field "port".(©¨¨×
+j
+java:S1845"TRename field "PASSWORD" to prevent any misunderstanding/clash with field "password".(°Ş°é
+L
+java:S2696 "6Make the enclosing method "static" or remove this set.(²‘”¢
+K
+java:S2696!"6Make the enclosing method "static" or remove this set.(¢ßùL
+Q
+java:S2696""6Make the enclosing method "static" or remove this set.(ŸÃîÂúÿÿÿÿ
+Q
+java:S2696#"6Make the enclosing method "static" or remove this set.(•‹øêøÿÿÿÿ

@@ -1,0 +1,14 @@
+
+S
+java:S1854e"=Remove this useless assignment to local variable "timestamp".(ÝÉ­Í
+Q
+java:S1854¦":Remove this useless assignment to local variable "filter".(Ï¿Ý¯
+V	java:S125Z"<This block of commented-out lines of code should be removed.(àÛ‰»øÿÿÿÿ
+D
+java:S1481e".Remove this unused "timestamp" local variable.(ÝÉ­Í
+B
+java:S1481¦"+Remove this unused "filter" local variable.(Ï¿Ý¯
+E
+java:S1940Õ")Use the opposite operator ("!=") instead.(ø¸Ž”þÿÿÿÿ
+R
+java:S1144ú"6Remove this unused private "handleInvokeError" method.(’ŸÍ·øÿÿÿÿ

@@ -1,0 +1,13 @@
+
+k
+java:S1104"UMake nowTokens a static final constant or non-public and provide accessors if needed.(”İªŸ
+w
+java:S1104"\Make loginLeakyBucket a static final constant or non-public and provide accessors if needed.(Š±ğùÿÿÿÿ
+z
+java:S1104"_Make registerLeakyBucket a static final constant or non-public and provide accessors if needed.(ŸÄÅ­úÿÿÿÿ
+Q
+java:S1444"6Make this "public static loginLeakyBucket" field final(Š±ğùÿÿÿÿ
+T
+java:S1444"9Make this "public static registerLeakyBucket" field final(ŸÄÅ­úÿÿÿÿ
+B
+java:S1905*"'Remove this unnecessary cast to "long".(ÓÑıÿÿÿÿ

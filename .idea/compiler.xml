@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="LKJAPI-Gateway" />
+        <module name="LKJAPI-interface" />
+        <module name="lkjapi-backend" />
+        <module name="LKJAPI-order" />
+        <module name="LKJAPI-common" />
+        <module name="LKJAPI-client-sdk" />
+        <module name="api-third-party" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="LKJAPI-common" options="-parameters" />
+      <module name="LKJAPI-order" options="-parameters" />
+      <module name="api-third-party" options="-parameters" />
+      <module name="lkjapi-backend" options="-parameters" />
+    </option>
+  </component>
+</project>

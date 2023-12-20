@@ -1,0 +1,32 @@
+
+‹
+java:S1192æ"hDefine a constant instead of duplicating this literal "é‚®ç®±æ ¼å¼æˆ–é‚®ç®±éªŒè¯ç é”™è¯¯!!!" 5 times.(û‡¤‚üÿÿÿÿ8Àú¢áÇ1
+c
+java:S1192ƒ"LDefine a constant instead of duplicating this literal "userAccount" 3 times.(äºùƒ
+F
+java:S1066ï"/Merge this if statement with the enclosing one.(Ïçìë
+`
+java:S2583±"DChange this condition so that it does not always evaluate to "false"(îÎÌØÿÿÿÿÿ
+g
+java:S2583å"DChange this condition so that it does not always evaluate to "false"(ñ¹Ûèûÿÿÿÿ8àú¢áÇ1
+}
+java:S4144ú"_Update this method so that its implementation is not identical to "emailCodeValid" on line 616.(ìÎÃÂ8ò—¤áÇ1
+@
+java:S5869y"*Remove duplicates in this character class.(Œ¥†°
+K
+java:S6397y"5Replace this character class by the character itself.(Œ¥†°
+=
+java:S1860€"&Synchronize on a new "Object" instead.(³»˜»
+i
+java:S3776¢"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(çİËŒ
+<
+java:S1860«"&Synchronize on a new "Object" instead.(óÛÉ
+H
+java:S1135Ï"2Complete the task associated to this TODO comment.(ªªèS
+=
+java:S1860é"&Synchronize on a new "Object" instead.(Úªÿ
+R	java:S125À"<This block of commented-out lines of code should be removed.(´ß‡Å
+D
+java:S1068W".Remove this unused "LOGIN_SIGN" private field.(áŞ•Ë
+R
+java:S1144ú"4Remove this unused private "emailCodeValid1" method.(ìÎÃÂ8Ùì£áÇ1

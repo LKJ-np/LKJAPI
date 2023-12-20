@@ -1,0 +1,11 @@
+
+f
+java:S1192E"PDefine a constant instead of duplicating this literal "interfaceInfoId" 5 times.(Ð°•¬
+b
+java:S1192F"GDefine a constant instead of duplicating this literal "userId" 6 times.(ÜÑ²…ÿÿÿÿÿ
+‹
+java:S1488œ"oImmediately return this expression instead of assigning it to the temporary variable "userInterfaceInfoVOList".(âã³—úÿÿÿÿ
+‡
+java:S1488·"kImmediately return this expression instead of assigning it to the temporary variable "interfaceInfoVOList".(¾ž‘‡ÿÿÿÿÿ
+f
+java:S3252—"JUse static access with "cn.hutool.core.collection.CollUtil" for "isEmpty".(ÎÓ×Çûÿÿÿÿ

@@ -1,0 +1,42 @@
+2023-12-17 16:14:22.544 INFO [restartedMain:c.a.n.c.u.ParamUtil] [settings] [req-serv] nacos-server port:8848
+2023-12-17 16:14:22.545 INFO [restartedMain:c.a.n.c.u.ParamUtil] [settings] [http-client] connect timeout:1000
+2023-12-17 16:14:22.545 INFO [restartedMain:c.a.n.c.u.ParamUtil] PER_TASK_CONFIG_SIZE: 3000.0
+2023-12-17 16:14:22.559 INFO [restartedMain:c.a.n.c.a.r.i.CredentialWatcher] null No credential found
+2023-12-17 16:14:22.561 INFO [restartedMain:c.a.n.c.c.i.LocalConfigInfoProcessor] LOCAL_SNAPSHOT_PATH:D:\A-LKJwork\LKJAPI-Gateway/gatewayDubboCache\nacos\config
+2023-12-17 16:14:24.314 INFO [com.alibaba.nacos.client.remote.worker:c.a.n.c.c.i.ClientWorker] [36a41cf5-17f2-4679-8c76-d959cac71f66_config-0] Connected,notify listen context...
+2023-12-17 16:14:24.336 INFO [restartedMain:c.a.n.c.c.i.Limiter] limitTime:5.0
+2023-12-17 16:14:36.198 INFO [restartedMain:c.a.n.c.c.i.CacheData] nacos.cache.data.init.snapshot = true 
+2023-12-17 16:14:36.199 INFO [restartedMain:c.a.n.c.c.i.ClientWorker] [fixed-localhost_8848] [subscribe] dubbo.migration+DUBBO_SERVICEDISCOVERY_MIGRATION
+2023-12-17 16:14:36.203 INFO [restartedMain:c.a.n.c.c.i.CacheData] [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=dubbo.migration, group=DUBBO_SERVICEDISCOVERY_MIGRATION, cnt=1
+2023-12-17 16:14:36.230 INFO [restartedMain:c.a.n.c.c.i.ClientWorker] [fixed-localhost_8848] [subscribe] dubbo.configurators+dubbo
+2023-12-17 16:14:36.230 INFO [restartedMain:c.a.n.c.c.i.CacheData] [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=dubbo.configurators, group=dubbo, cnt=1
+2023-12-17 16:14:36.240 INFO [restartedMain:c.a.n.c.c.i.ClientWorker] [fixed-localhost_8848] [subscribe] com.lkjapi.lkjapicommon.service.ApiBackendService::.condition-router+dubbo
+2023-12-17 16:14:36.240 INFO [restartedMain:c.a.n.c.c.i.CacheData] [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=com.lkjapi.lkjapicommon.service.ApiBackendService::.condition-router, group=dubbo, cnt=1
+2023-12-17 16:14:36.244 INFO [restartedMain:c.a.n.c.c.i.ClientWorker] [fixed-localhost_8848] [subscribe] dubbo.condition-router+dubbo
+2023-12-17 16:14:36.244 INFO [restartedMain:c.a.n.c.c.i.CacheData] [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=dubbo.condition-router, group=dubbo, cnt=1
+2023-12-17 16:14:36.361 INFO [restartedMain:c.a.n.c.c.i.ClientWorker] [fixed-localhost_8848] [subscribe] dubbo-springboot-demo-provide.MESHAPPRULE+dubbo
+2023-12-17 16:14:36.361 INFO [restartedMain:c.a.n.c.c.i.CacheData] [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=dubbo-springboot-demo-provide.MESHAPPRULE, group=dubbo, cnt=1
+2023-12-17 16:14:36.362 INFO [restartedMain:c.a.n.c.c.i.ClientWorker] [fixed-localhost_8848] [subscribe] dubbo-springboot-demo-provide.tag-router+dubbo
+2023-12-17 16:14:36.362 INFO [restartedMain:c.a.n.c.c.i.CacheData] [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=dubbo-springboot-demo-provide.tag-router, group=dubbo, cnt=1
+2023-12-17 16:14:36.365 INFO [restartedMain:c.a.n.c.c.i.ClientWorker] [fixed-localhost_8848] [subscribe] com.lkjapi.lkjapicommon.service.ApiBackendService::.configurators+dubbo
+2023-12-17 16:14:36.366 INFO [restartedMain:c.a.n.c.c.i.CacheData] [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=com.lkjapi.lkjapicommon.service.ApiBackendService::.configurators, group=dubbo, cnt=1
+2023-12-17 16:14:36.573 INFO [restartedMain:c.a.n.c.c.i.ClientWorker] [fixed-localhost_8848] [subscribe] com.lkjapi.lkjapicommon.service.ApiBackendService+mapping
+2023-12-17 16:14:36.573 INFO [restartedMain:c.a.n.c.c.i.CacheData] [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=com.lkjapi.lkjapicommon.service.ApiBackendService, group=mapping, cnt=1
+2023-12-17 16:14:36.688 INFO [com.alibaba.nacos.client.remote.worker:c.a.n.c.c.i.ClientWorker] [d3842169-2492-41cc-802b-6c1fdacba296_config-0] Connected,notify listen context...
+2023-12-17 16:14:36.694 INFO [restartedMain:c.a.n.c.c.u.JvmUtil] isMultiInstance:false
+2023-12-17 16:14:36.838 INFO [restartedMain:c.a.n.c.c.i.ClientWorker] [fixed-localhost_8848] [subscribe] org.apache.dubbo.metadata.MetadataService:1.0.0:dubbo.configurators+dubbo
+2023-12-17 16:14:36.838 INFO [restartedMain:c.a.n.c.c.i.CacheData] [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=org.apache.dubbo.metadata.MetadataService:1.0.0:dubbo.configurators, group=dubbo, cnt=1
+2023-12-17 16:14:36.892 INFO [com.alibaba.nacos.client.Worker:c.a.n.c.c.i.CacheData] [fixed-localhost_8848] [notify-listener] time cost=0ms in ClientWorker, dataId=com.lkjapi.lkjapicommon.service.ApiBackendService, group=mapping, md5=959aceb64ccd9744bb43f7466f0efae3, listener=org.apache.dubbo.metadata.store.nacos.NacosMetadataReport$NacosConfigListener@6a31d5b3 
+2023-12-17 16:14:36.892 INFO [nacos.client.cachedata.internal.notifier:c.a.n.c.c.i.CacheData] [fixed-localhost_8848] [notify-context] dataId=com.lkjapi.lkjapicommon.service.ApiBackendService, group=mapping, md5=959aceb64ccd9744bb43f7466f0efae3
+2023-12-17 16:14:36.895 INFO [nacos.client.cachedata.internal.notifier:c.a.n.c.c.i.CacheData] [fixed-localhost_8848] [notify-ok] dataId=com.lkjapi.lkjapicommon.service.ApiBackendService, group=mapping, md5=959aceb64ccd9744bb43f7466f0efae3, listener=org.apache.dubbo.metadata.store.nacos.NacosMetadataReport$NacosConfigListener@6a31d5b3 ,cost=3 millis.
+2023-12-17 16:20:43.174 INFO [DubboShutdownHook:c.a.n.c.a.r.i.CredentialWatcher] [null] CredentialWatcher is stopped
+2023-12-17 16:20:43.174 INFO [DubboShutdownHook:c.a.n.c.a.r.i.CredentialService] [null] CredentialService is freed
+2023-12-17 16:20:45.224 INFO [com.alibaba.nacos.client.Worker:c.a.n.c.a.r.i.CredentialWatcher] null No credential found
+2023-12-17 16:20:45.245 INFO [DubboShutdownHook:c.a.n.c.c.i.ClientWorker] com.alibaba.nacos.client.config.impl.ClientWorker do shutdown begin
+2023-12-17 16:20:45.245 INFO [DubboShutdownHook:c.a.n.c.a.r.i.CredentialWatcher] [null] CredentialWatcher is stopped
+2023-12-17 16:20:45.245 INFO [DubboShutdownHook:c.a.n.c.a.r.i.CredentialService] [null] CredentialService is freed
+2023-12-17 16:20:45.245 INFO [DubboShutdownHook:c.a.n.c.c.i.ClientWorker] Trying to shutdown transport client com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient@27c0d1e3
+2023-12-17 16:20:45.245 INFO [DubboShutdownHook:c.a.n.c.c.i.ClientWorker] Trying to shutdown rpc client 36a41cf5-17f2-4679-8c76-d959cac71f66_config-0
+2023-12-17 16:20:45.246 INFO [DubboShutdownHook:c.a.n.c.c.i.ClientWorker] Remove rpc client 36a41cf5-17f2-4679-8c76-d959cac71f66_config-0
+2023-12-17 16:20:45.246 INFO [DubboShutdownHook:c.a.n.c.c.i.ClientWorker] Shutdown executor java.util.concurrent.ScheduledThreadPoolExecutor@358c2cb5[Running, pool size = 32, active threads = 1, queued tasks = 1, completed tasks = 77]
+2023-12-17 16:20:45.246 INFO [DubboShutdownHook:c.a.n.c.c.i.ClientWorker] com.alibaba.nacos.client.config.impl.ClientWorker do shutdown stop

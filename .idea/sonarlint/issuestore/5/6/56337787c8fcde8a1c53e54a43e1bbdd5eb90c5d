@@ -1,6 +1,0 @@
-
-q
-java:S1450"VRemove the "finalId" field and declare it as a local variable in the relevant methods.(¨Û¹ýûÿÿÿÿ
-V	java:S125*"<This block of commented-out lines of code should be removed.(ì¼¾ùÿÿÿÿ
-F
-java:S1068"+Remove this unused "finalId" private field.(¨Û¹ýûÿÿÿÿ

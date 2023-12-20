@@ -11,6 +11,7 @@
         <module name="lkjapi-backend" />
         <module name="LKJAPI-order" />
         <module name="LKJAPI-common" />
+        <module name="LKJAPI-third-party" />
         <module name="LKJAPI-client-sdk" />
         <module name="api-third-party" />
       </profile>
@@ -20,6 +21,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="LKJAPI-common" options="-parameters" />
       <module name="LKJAPI-order" options="-parameters" />
+      <module name="LKJAPI-third-party" options="-parameters" />
       <module name="api-third-party" options="-parameters" />
       <module name="lkjapi-backend" options="-parameters" />
     </option>

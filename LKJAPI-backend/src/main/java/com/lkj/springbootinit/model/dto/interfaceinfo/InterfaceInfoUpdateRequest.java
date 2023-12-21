@@ -13,17 +13,17 @@ public class InterfaceInfoUpdateRequest implements Serializable {
 
 
     /**
-     * 主键
+     *
      */
     private Long id;
 
     /**
-     * 名称
+     * 接口名称
      */
     private String name;
 
     /**
-     * 描述
+     * 接口描述
      */
     private String description;
 
@@ -31,6 +31,11 @@ public class InterfaceInfoUpdateRequest implements Serializable {
      * 接口地址
      */
     private String url;
+
+    /**
+     * 请求类型
+     */
+    private String method;
 
     /**
      * 请求参数
@@ -48,14 +53,7 @@ public class InterfaceInfoUpdateRequest implements Serializable {
     private String responseHeader;
 
     /**
-     * 接口状态（0-关闭，1-开启）
+     * 接口状态 0 关闭，1启用
      */
-    private Integer status;
-
-    /**
-     * 请求类型
-     */
-    private String method;
-
-    private static final long serialVersionUID = 1L;
+    private Byte status;
 }

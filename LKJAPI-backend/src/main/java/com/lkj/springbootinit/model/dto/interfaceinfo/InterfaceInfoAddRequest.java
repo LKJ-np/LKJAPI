@@ -12,12 +12,12 @@ import java.io.Serializable;
 public class InterfaceInfoAddRequest implements Serializable {
 
     /**
-     * 名称
+     * 接口名称
      */
     private String name;
 
     /**
-     * 描述
+     * 接口描述
      */
     private String description;
 
@@ -25,6 +25,11 @@ public class InterfaceInfoAddRequest implements Serializable {
      * 接口地址
      */
     private String url;
+
+    /**
+     * 请求类型
+     */
+    private String method;
 
     /**
      * 请求参数
@@ -40,10 +45,5 @@ public class InterfaceInfoAddRequest implements Serializable {
      * 响应头
      */
     private String responseHeader;
-
-    /**
-     * 请求类型
-     */
-    private String method;
 
 }

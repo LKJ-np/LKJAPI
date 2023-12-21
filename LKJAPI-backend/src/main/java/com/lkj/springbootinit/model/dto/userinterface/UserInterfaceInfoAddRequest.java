@@ -16,6 +16,7 @@ import java.util.Date;
 public class UserInterfaceInfoAddRequest implements Serializable {
 
 
+
     /**
      * 主键id
      */

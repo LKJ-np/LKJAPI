@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.czq.apiorder.mapper.TOrderMapper">
 
-    <resultMap id="BaseResultMap" type="com.czq.apicommon.entity.Order">
+    <resultMap id="BaseResultMap" type="com.lkj.apicommon.entity.Order">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="orderSn" column="orderSn" jdbcType="VARCHAR"/>
             <result property="userId" column="userId" jdbcType="BIGINT"/>
@@ -23,7 +23,7 @@
         `count`,totalAmount,status,
         isDelete,createTime,updateTime
     </sql>
-    <select id="listTopBuyInterfaceInfo" resultType="com.czq.apicommon.entity.Order">
+    <select id="listTopBuyInterfaceInfo" resultType="com.lkj.apicommon.entity.Order">
         select interfaceId , SUM(`count`) as `count` from t_order
         GROUP BY interfaceId
         ORDER BY `count` desc

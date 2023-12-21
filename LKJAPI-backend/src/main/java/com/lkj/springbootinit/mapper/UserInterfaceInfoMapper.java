@@ -3,6 +3,8 @@ package com.lkj.springbootinit.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.lkj.apicommon.entity.UserInterfaceInfo;
+import com.lkj.springbootinit.model.vo.UserInterfaceInfoAnalysisVo;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -13,6 +15,9 @@ import java.util.List;
 * @Entity generator.domain.UserInterfaceInfo
 */
 public interface UserInterfaceInfoMapper extends BaseMapper<UserInterfaceInfo> {
+
+    List<UserInterfaceInfoAnalysisVo> listTopInterfaceInfo(@Param("size") int size);
+
     List<UserInterfaceInfo> listTopInvokeInterfaceInfo(int limit);
 }
 

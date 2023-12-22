@@ -1,6 +1,5 @@
 com\lkj\apicommon\common\IdRequest.class
 com\lkj\apicommon\service\ApiBackendService.class
-com\lkj\Main.class
 com\lkj\apicommon\common\BaseResponse.class
 com\lkj\apicommon\constant\RabbitmqConstant.class
 com\lkj\apicommon\constant\RedisConstant.class

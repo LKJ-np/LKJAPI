@@ -40,7 +40,6 @@ public class ApiBackendServiceImpl implements ApiBackendService {
     @Resource
     private InterfaceChargingService interfaceChargingService;
 
-
     @Override
     public User getInvokeUser(String accessKey) {
 

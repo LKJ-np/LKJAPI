@@ -20,7 +20,7 @@ import java.io.IOException;
 import static com.czq.apiorder.config.RabbitmqConfig.QUEUE_ORDER_DLX_QUEUE;
 
 
-    @Component
+@Component
 @Slf4j
 public class OrderTimeOutListener {
 

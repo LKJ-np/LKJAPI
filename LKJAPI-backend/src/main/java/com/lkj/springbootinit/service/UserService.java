@@ -98,7 +98,7 @@ public interface UserService extends IService<User> {
      * @param request
      * @return
      */
-    boolean userLogout(HttpServletRequest request);
+    boolean userLogout(HttpServletRequest request,HttpServletResponse response);
 
     /**
      * 获取脱敏的已登录用户信息
@@ -153,9 +153,6 @@ public interface UserService extends IService<User> {
      * @param response
      */
     void getCaptcha(HttpServletRequest request, HttpServletResponse response);
-
-
-
 
     /**
      * 重新生成ak，sk

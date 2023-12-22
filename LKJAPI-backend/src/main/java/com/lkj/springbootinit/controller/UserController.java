@@ -165,11 +165,11 @@ public class UserController {
      * @return
      */
     @PostMapping("/logout")
-    public BaseResponse<Boolean> userLogout(HttpServletRequest request) {
+    public BaseResponse<Boolean> userLogout(HttpServletRequest request,HttpServletResponse response) {
         if (request == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
-        boolean result = userService.userLogout(request);
+        boolean result = userService.userLogout(request,response);
         return ResultUtils.success(result);
     }
 
@@ -298,9 +298,9 @@ public class UserController {
      * @param request
      * @return
      */
-    @PostMapping("/list/page")
+    @GetMapping("/list/page")
     @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
-    public BaseResponse<Page<UserVO>> listUserByPage(@RequestBody UserQueryRequest userQueryRequest,
+    public BaseResponse<Page<UserVO>> listUserByPage(UserQueryRequest userQueryRequest,
             HttpServletRequest request) {
         long current = 1;
         long size = 10;
@@ -388,7 +388,7 @@ public class UserController {
     }
 
     /**
-     * 生成ak，sk
+     * 显示ak，sk
      * @param request
      * @return
      */

@@ -93,6 +93,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     /**
      * 账号密码注册
+     * todo 后续需要添加验证的校验
      * @param userAccount   用户账户
      * @param userPassword  用户密码
      * @param checkPassword 校验密码
@@ -377,13 +378,19 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
      * @param request
      */
     @Override
-    public boolean userLogout(HttpServletRequest request) {
-        if (request.getSession().getAttribute(USER_LOGIN_STATE) == null) {
-            throw new BusinessException(ErrorCode.OPERATION_ERROR, "未登录");
+    public boolean userLogout(HttpServletRequest request,HttpServletResponse response) {
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("token")){
+                Long userId = JwtUtils.getUserIdByToken(request);
+                stringRedisTemplate.delete(USER_LOGIN_STATE+userId);
+                Cookie timeOutCookie = new Cookie(cookie.getName(),cookie.getValue());
+                timeOutCookie.setMaxAge(0);
+                response.addCookie(timeOutCookie);
+                return true;
+            }
         }
-        // 移除登录态
-        request.getSession().removeAttribute(USER_LOGIN_STATE);
-        return true;
+        throw new BusinessException(ErrorCode.OPERATION_ERROR, "未登录");
     }
 
     @Override
@@ -496,6 +503,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return result;
     }
 
+    /**
+     * 生成图像验证码
+     * @param request
+     * @param response
+     */
     @Override
     public void getCaptcha(HttpServletRequest request, HttpServletResponse response) {
         //前端必须传一个 signature 来作为唯一标识
@@ -503,11 +515,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         if (StringUtils.isEmpty(signature)) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
-
         try {
             // 自定义纯数字的验证码（随机4位数字，可重复）
             RandomGenerator randomGenerator = new RandomGenerator("0123456789", 4);
+            //定义图形验证码的长，宽，验证码字符数，干扰线宽度
             LineCaptcha lineCaptcha = CaptchaUtil.createLineCaptcha(100, 30);
+            //调用父类的setGenerator方法，设置验证码的类型
             lineCaptcha.setGenerator(randomGenerator);
             //设置响应头
             response.setContentType("image/jpeg");

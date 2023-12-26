@@ -26,7 +26,6 @@ import com.lkj.apicommon.service.InnerUserService;
 import com.lkj.apicommon.vo.OrderVO;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.beans.BeanUtils;
-
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -65,7 +64,8 @@ public class TOrderServiceImpl extends ServiceImpl<TOrderMapper, Order>
     private TOrderMapper orderMapper;
 
 
-    public static final String USER_LOGIN_STATE = "user:login:";
+//    public static final String USER_LOGIN_STATE = "user:login:";
+    public static final String USER_LOGIN_STATE = "user_login";
 
 
 
@@ -75,7 +75,6 @@ public class TOrderServiceImpl extends ServiceImpl<TOrderMapper, Order>
     public OrderVO addOrder(OrderAddRequest orderAddRequest, HttpServletRequest request) {
 
 //        1.订单服务校验参数，如用户是否存在，接口是否存在等校验
-
         if (orderAddRequest == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
@@ -162,23 +161,32 @@ public class TOrderServiceImpl extends ServiceImpl<TOrderMapper, Order>
         return orderVO;
     }
 
+    /**
+     * 获取订单列表
+     * @param orderQueryRequest
+     * @param request
+     * @return
+     */
     @Override
     public Page<OrderVO> listPageOrder(OrderQueryRequest orderQueryRequest, HttpServletRequest request) {
+        //获取订单的当前状态
         Integer type = Integer.parseInt(orderQueryRequest.getType());
+        //获得目前在第几页，每页大小
         long current = orderQueryRequest.getCurrent();
         long pageSize = orderQueryRequest.getPageSize();
+        //如果订单状态没在这三个里面，抛异常
         if (!OrderStatusEnum.getValues().contains(type)) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
-
-
+        //获取当前登录用户信息
         User userVO = getLoginUser(request);
+        //分页查询id等于当前id的用户，账单状态等于当前状态的数据
         QueryWrapper<Order> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("userId",userVO.getId()).eq("status",type);
         Page<Order> page = new Page<>(current,pageSize);
         Page<Order> orderPage = this.page(page, queryWrapper);
-
         Page<OrderVO> orderVOPage = new Page<>(orderPage.getCurrent(),orderPage.getSize(),orderPage.getTotal());
+
 
         List<OrderVO> orderVOList = orderPage.getRecords().stream().map(order -> {
             Long interfaceId = order.getInterfaceId();
@@ -196,8 +204,6 @@ public class TOrderServiceImpl extends ServiceImpl<TOrderMapper, Order>
         }).collect(Collectors.toList());
         orderVOPage.setRecords(orderVOList);
         return orderVOPage;
-
-
     }
 
     @Override
@@ -227,7 +233,7 @@ public class TOrderServiceImpl extends ServiceImpl<TOrderMapper, Order>
         if (userId == null) {
             throw new BusinessException(ErrorCode.NOT_LOGIN_ERROR);
         }
-
+        //从redis里面拿到json数据转化为user对象
         String userJson = stringRedisTemplate.opsForValue().get(USER_LOGIN_STATE + userId);
         User user = gson.fromJson(userJson, User.class);
         if (user == null) {

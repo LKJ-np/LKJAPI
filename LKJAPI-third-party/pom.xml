@@ -48,7 +48,7 @@
             <version>0.0.1</version>
         </dependency>
 
-<!--        阿里云支付依赖-->
+<!--        阿里云沙箱支付依赖-->
         <dependency>
             <groupId>com.alipay.sdk</groupId>
             <artifactId>alipay-sdk-java</artifactId>

@@ -10,6 +10,6 @@ public class NameController {
 
     @PostMapping("/user")
     public String getName(@RequestBody User user){
-        return "你的名字是"+user.getUsername();
+        return "你的名字是"+user.getName();
     }
 }

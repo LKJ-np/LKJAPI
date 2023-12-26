@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 /**
- * @author niumazlb
+ * @author lkj
  */
 @Configuration
 @PropertySource("classpath:application-alipay.properties")
@@ -14,7 +14,7 @@ import org.springframework.context.annotation.PropertySource;
 @Data
 public class AliPayConfig {
     /**
-     * APPID
+     * APPID，收款账号既是APPID对应支付宝账号
      */
     private String appId;
 
@@ -24,17 +24,17 @@ public class AliPayConfig {
     private String privateKey;
 
     /**
-     * 支付宝公钥
+     * 支付宝公钥,查看地址：https://openhome.alipay.com/platform/keyManage.htm 对应APPID下的支付宝公钥。
      */
     private String publicKey;
 
     /**
-     * 服务器异步通知页面路径,需http://格式的完整路径
+     * 服务器异步通知页面路径  需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
      */
     private String notifyUrl;
 
     /**
-     * 页面跳转同步通知页面路径,需http://格式的完整路径
+     * 页面跳转同步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
      */
     private String returnUrl;
 

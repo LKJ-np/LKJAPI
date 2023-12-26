@@ -16,7 +16,7 @@ import java.util.List;
 public interface TOrderService extends IService<Order> {
 
     /**
-     * 创建订单
+     * 购买接口，创建订单
      * @param orderAddRequest
      * @param request
      * @return

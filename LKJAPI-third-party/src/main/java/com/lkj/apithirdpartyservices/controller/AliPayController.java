@@ -64,16 +64,17 @@ public class AliPayController {
         String subject = alipayRequest.getSubject() ;
         double totalAmount = alipayRequest.getTotalAmount();
 
+        //1、根据支付宝的配置生成一个支付客户端
         AlipayClient alipayClient = new DefaultAlipayClient(aliPayConfig.getGatewayUrl(),
                 aliPayConfig.getAppId(),
                 aliPayConfig.getPrivateKey(),
                 "json",aliPayConfig.getCharset(),
                 aliPayConfig.getPublicKey(),aliPayConfig.getSignType());
-
+        //创建一个支付请求/设置请求参数
         AlipayTradePrecreateRequest request = new AlipayTradePrecreateRequest();
         AlipayTradePrecreateModel model = new AlipayTradePrecreateModel();
 
-        request.setNotifyUrl("http://www.chen-code.work:9000/api/third/alipay/notify");
+        request.setNotifyUrl("http://localhost:9000/api/third/alipay/notify");
 
         request.setBizModel(model);
         model.setOutTradeNo(outTradeNo);

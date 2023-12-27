@@ -63,7 +63,7 @@ public class TOrderServiceImpl extends ServiceImpl<TOrderMapper, Order>
     private TOrderMapper orderMapper;
 
 
-    public static final String USER_LOGIN_STATE = "user:login:";
+    public static final String USER_LOGIN_STATE = "user_login";
 
 
 

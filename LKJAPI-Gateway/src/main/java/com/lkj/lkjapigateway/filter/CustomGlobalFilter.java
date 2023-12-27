@@ -151,7 +151,9 @@ public class CustomGlobalFilter implements GatewayFilter, Ordered {
         // 将二者转化成原子性操作(backend本地服务的本地事务实现)，解决二者数据一致性问题
         boolean result = false;
         try {
-            result = apiBackendService.invokeCount(invokeUser.getId(), interfaceInfo.getId());
+            Long userId = invokeUser.getId();
+            Long interfaceId = interfaceInfo.getId();
+            result = apiBackendService.invokeCount(userId, interfaceId);
         } catch (Exception e) {
             log.error("统计接口出现问题或者用户恶意调用不存在的接口");
             e.printStackTrace();
@@ -252,7 +254,7 @@ public class CustomGlobalFilter implements GatewayFilter, Ordered {
         return response.setComplete();
     }
     @Override
-        public int getOrder() {
+    public int getOrder() {
             return -2;
         }
     }

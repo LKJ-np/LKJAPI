@@ -173,7 +173,7 @@ public class UserInterfaceInfoController {
     }
 
     /**
-     * 分页获取列表
+     * 分页获取接口列表
      *
      * @param  userInterfaceInfoQueryRequest
      * @param request
@@ -202,6 +202,12 @@ public class UserInterfaceInfoController {
         return ResultUtils.success(userInterfaceInfoPage);
     }
 
+    /**
+     * 分页获取用户所拥有的接口列表
+     * @param userId
+     * @param request
+     * @return
+     */
     @GetMapping("/list/userId")
     public BaseResponse<List<UserInterfaceInfoVO>> getInterfaceInfoByUserId(@RequestParam Long userId, HttpServletRequest request) {
         List<UserInterfaceInfoVO > userInterfaceInfoVOList = userInterfaceInfoService.getInterfaceInfoByUserId(userId, request);

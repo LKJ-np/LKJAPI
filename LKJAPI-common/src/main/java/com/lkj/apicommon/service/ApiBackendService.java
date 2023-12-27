@@ -29,7 +29,7 @@ public interface ApiBackendService {
 
 
     /**
-     * 统计接口调用次数
+     * 根据调用者id与接口id统计用户调用次数
      * @param userId
      * @param interfaceInfoId
      * @return

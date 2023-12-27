@@ -20,6 +20,7 @@ import com.lkj.apicommon.entity.User;
 import com.lkj.apicommon.entity.UserInterfaceInfo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
@@ -47,6 +48,7 @@ public class UserInterfaceInfoServiceImpl extends ServiceImpl<UserInterfaceInfoM
 
     @Resource
     private InterfaceInfoService interfaceInfoService;
+
     @Override
     public void validUserInterfaceInfo(UserInterfaceInfo userInterfaceInfo, boolean b) {
         //判断接口信息对想是否为空，为空则抛出参数错误的异常
@@ -58,19 +60,41 @@ public class UserInterfaceInfoServiceImpl extends ServiceImpl<UserInterfaceInfoM
         }
     }
 
+    /**
+     * 根据调用者id与接口id统计用户调用次数
+     * @param interfaceInfoId
+     * @param userId
+     * @return
+     */
+    //添加事务
+    @Transactional
     @Override
-    public boolean invokeCount(long interfaceInfoId, long userId) {
+    public boolean invokeCount(long userId, long interfaceInfoId) {
         //判断（其实这里还应该判断校验存不存在，这里就不用校验了，因为它不存在，也更新不到那条记录）
         if (interfaceInfoId <= 0 || userId <= 0){
-            throw new BusinessException(ErrorCode.PARAMS_ERROR);
+            throw new BusinessException(ErrorCode.PARAMS_ERROR,"用户或者接口不存在");
         }
         //使用UpdateWrapper对象构建更新条件
-        UpdateWrapper<UserInterfaceInfo> updateWrapper= new UpdateWrapper<>();
-        updateWrapper.eq("interfaceInfoId",interfaceInfoId);
+        QueryWrapper<UserInterfaceInfo> queryWrapper= new QueryWrapper<>();
+        queryWrapper.eq("interfaceInfoId",interfaceInfoId);
+        queryWrapper.eq("userId",userId);
+
+        UserInterfaceInfo userInterfaceInfo = userInterfaceInfoMapper.selectOne(queryWrapper);
+        //获取乐观锁版本号，剩余调用次数
+        Integer version = userInterfaceInfo.getVersion();
+        Integer leftNum = userInterfaceInfo.getLeftNum();
+        if (leftNum<=0){
+            log.error("接口剩余调用次数不足");
+            return false;
+        }
+        UpdateWrapper<UserInterfaceInfo> updateWrapper = new UpdateWrapper<>();
         updateWrapper.eq("userId",userId);
+        updateWrapper.eq("interfaceInfoId",interfaceInfoId);
+        updateWrapper.eq("version",version);
+        updateWrapper.gt("leftNum",0);
         //setSql方法用于设置要更新的SQL语句。这里通过SQL表达式实现了两个字段的更新操作：
-        //leftNum = leftNum - 1 和totalNum = totalNum + 1。意思是将leftNum字段减1，totalNum字段加1。
-        updateWrapper.setSql("leftNum = leftNum - 1,totalNum = totalNum + 1");
+        //leftNum = leftNum - 1 和totalNum = totalNum + 1。意思是将leftNum字段减1，totalNum字段加1，版本号+1.
+        updateWrapper.setSql("totalNum = totalNum +1,leftNum = leftNum-1,version = version+1");
         return this.update(updateWrapper);
     }
 
@@ -87,6 +111,12 @@ public class UserInterfaceInfoServiceImpl extends ServiceImpl<UserInterfaceInfoM
         return this.update(updateWrapper);
     }
 
+    /**
+     * 获取接口的剩余调用次数
+     * @param userId
+     * @param interfaceInfoId
+     * @return
+     */
     @Override
     public int getLeftInvokeCount(long userId, long interfaceInfoId) {
         //1.根据用户id和接口id获取用户接口关系详情对象
@@ -98,6 +128,11 @@ public class UserInterfaceInfoServiceImpl extends ServiceImpl<UserInterfaceInfoM
         return userInterfaceInfo.getLeftNum();
     }
 
+    /**
+     * 更新用户接口表
+     * @param updateUserInterfaceInfoDTO
+     * @return
+     */
     @Override
     public boolean updateUserInterfaceInfo(UpdateUserInterfaceInfoDTO updateUserInterfaceInfoDTO) {
         Long userId = updateUserInterfaceInfoDTO.getUserId();
@@ -132,6 +167,12 @@ public class UserInterfaceInfoServiceImpl extends ServiceImpl<UserInterfaceInfoM
         }
     }
 
+    /**
+     * 通过用户id获取拥有的接口信息
+     * @param userId
+     * @param request
+     * @return
+     */
     @Override
     public List<UserInterfaceInfoVO> getInterfaceInfoByUserId(Long userId, HttpServletRequest request) {
         User loginUser = userService.getLoginUser(request);
@@ -168,6 +209,11 @@ public class UserInterfaceInfoServiceImpl extends ServiceImpl<UserInterfaceInfoM
         return userInterfaceInfoVOList;
     }
 
+    /**
+     * 获取调用接口的前几排行
+     * @param limit
+     * @return
+     */
     @Override
     public List<InterfaceInfoVo> interfaceInvokeTopAnalysis(int limit) {
         List<UserInterfaceInfo> userInterfaceInfoList = userInterfaceInfoMapper.listTopInvokeInterfaceInfo(limit);

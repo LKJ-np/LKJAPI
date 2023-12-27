@@ -11,13 +11,14 @@
             <result property="totalNum" column="totalNum" jdbcType="INTEGER"/>
             <result property="leftNum" column="leftNum" jdbcType="INTEGER"/>
             <result property="status" column="status" jdbcType="INTEGER"/>
+            <result property="version" column="version" jdbcType="INTEGER"/>
             <result property="createTime" column="createTime" jdbcType="TIMESTAMP"/>
             <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
             <result property="isDelete" column="isDelete" jdbcType="TINYINT"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,userId,interfaceInfoId,
+        id,userId,interfaceInfoId,version,
         totalNum,leftNum,status,
         createTime,updateTime,isDelete
     </sql>

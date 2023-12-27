@@ -504,7 +504,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     /**
-     * 生成图像验证码
+     * 生成图像验证码，用于账号密码注册
      * @param request
      * @param response
      */

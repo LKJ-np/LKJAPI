@@ -22,7 +22,7 @@ import java.util.List;
 public interface UserService extends IService<User> {
 
     /**
-     * 用户注册
+     * 用户账号密码注册
      *
      * @param userAccount   用户账户
      * @param userPassword  用户密码
@@ -148,7 +148,7 @@ public interface UserService extends IService<User> {
     boolean uploadFileAvatar(MultipartFile file, HttpServletRequest request);
 
     /**
-     * 生成图像验证码
+     * 生成图像验证码，用于账号密码注册
      * @param request
      * @param response
      */

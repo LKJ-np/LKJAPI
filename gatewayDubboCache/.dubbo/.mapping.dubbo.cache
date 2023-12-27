@@ -1,4 +1,4 @@
 #Dubbo cache
-#Tue Dec 26 22:54:18 CST 2023
+#Wed Dec 27 19:48:24 CST 2023
 com.lkj.apicommon.service.ApiBackendService=["dubbo"]
 com.lkjapi.lkjapicommon.service.ApiBackendService=["dubbo-springboot-demo-provide"]

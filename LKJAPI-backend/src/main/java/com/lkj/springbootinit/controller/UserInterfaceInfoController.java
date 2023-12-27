@@ -33,7 +33,6 @@ import java.util.List;
 
 /**
  * 用户接口管理
- *
  */
 @RestController
 @RequestMapping("/userInterfaceInfo")
@@ -52,7 +51,6 @@ public class UserInterfaceInfoController {
 
     /**
      * 创建
-     *
      * @param  userInterfaceInfoAddRequest
      * @param request
      * @return

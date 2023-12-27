@@ -23,7 +23,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,8 +31,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
- * 用户接口
- *
+ * 用户服务
  */
 @RestController
 @RequestMapping("/user")
@@ -113,7 +111,6 @@ public class UserController {
         long result = userService.userEmailRegister(emailNum, emailCaptcha);
         return ResultUtils.success(result);
     }
-
 
     /**
      * 用户账号密码登录
@@ -355,7 +352,7 @@ public class UserController {
     }
 
     /**
-     * 获取图形验证码
+     * 获取图形验证码，用于账号密码注册
      *
      * @param request
      * @param response

@@ -81,7 +81,6 @@ create table interface_charging
     updateTime      datetime default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '更新时间',
     isDelete        tinyint  default 1                 not null comment '是否删除(0-正常 1-删除)'
 )
-    charset = utf8;
     comment '接口收费表';
 
 create table t_order

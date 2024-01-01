@@ -141,7 +141,8 @@ public class CustomGlobalFilter implements GatewayFilter, Ordered {
             //尝试从内部接口信息服务获取指定路径和方法的接口信息
              interfaceInfo = apiBackendService.getInterFaceInfo(path, method);
         } catch (Exception e) {
-            log.error("getInterfaceInfo error",e);
+            log.info("getInterfaceInfo error");
+            e.printStackTrace();
         }
         if (interfaceInfo == null){
             log.error("接口不存在！！！！");

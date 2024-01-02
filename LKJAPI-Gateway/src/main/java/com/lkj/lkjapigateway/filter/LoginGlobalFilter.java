@@ -40,7 +40,7 @@ public class LoginGlobalFilter implements GlobalFilter, Ordered {
         ServerHttpResponse response = exchange.getResponse();
         HttpHeaders headers = request.getHeaders();
 
-        //限流过滤
+        //限流过滤 tryAcquire() 判断时候能获取到令牌, 如果不能获取立即返回 false
         if (!rateLimiter.tryAcquire()) {
             log.error("请求太频繁了，被限流了!!!");
             throw new BusinessException(ErrorCode.TOO_MANY_REQUESTS);

@@ -67,10 +67,9 @@ public class LoginGlobalFilter implements GlobalFilter, Ordered {
         if (!getLoginUserByCookie(cookie)) {
             throw new BusinessException(ErrorCode.NOT_LOGIN_ERROR);
         }
-
         return chain.filter(exchange);
     }
-
+    //获取当前用户的Cookie，拿到token检验用户是否登录
     private Boolean getLoginUserByCookie(String cookie) {
         String[] split = cookie.split(";");
         for (String cookeKey : split) {

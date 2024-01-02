@@ -8,22 +8,21 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 /**
- *
- *
+ *JWT工具
  */
 public class JwtUtils {
 
     //常量
-    public static final long EXPIRE = 1000 * 60 * 60 * 24; //token过期时间
-    public static final String APP_SECRET = "ukc8BDbRigUDaY6pZFfWus2jZWLPHO"; //秘钥，用来加密数据签名
+    public static final long EXPIRE = 1000 * 60 * 60 * 24; //设置token过期时间，否则JWT一直未过期
+    public static final String APP_SECRET = "ukc8BDbRigUDaY6pZFfWus2jZWLPHO"; //进行数字签名的私钥，一定要保管好，用来加密数据签名
 
     //生成token字符串的方法
     public static String getJwtToken(Long id, String userName){
 
         String JwtToken = Jwts.builder()
                 //1.JWT头部分
-                .setHeaderParam("typ", "JWT")           //typ属性表示令牌的类型，JWT令牌统一写为JWT
-                .setHeaderParam("alg", "HS256")         //alg属性表示签名使用的算法，默认为HMAC SHA256（写为HS256）
+                .setHeaderParam("typ", "JWT")   //typ属性表示令牌的类型，JWT令牌统一写为JWT
+                .setHeaderParam("alg", "HS256") //alg属性表示签名使用的算法，默认为HMAC SHA256（写为HS256）
 
                 //2.JWT有效载荷部分
 //               iss：发行人

@@ -205,7 +205,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
             //消息队列异步发送短信，提高短信的吞吐量
             //异步发送SmsMessage对象到指定的的交换机EXCHANGE_SMS_INFORM 和路由键 ROUTINGKEY_SMS
-            //todo 看rabbitmq
             rabbitTemplate.convertAndSend(EXCHANGE_SMS_INFORM,ROUTINGKEY_SMS,smsMessage);
 
             log.info("邮箱对象："+smsMessage.toString());

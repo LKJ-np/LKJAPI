@@ -3,8 +3,7 @@ package com.lkj.springbootinit.utils;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * 手机令牌桶算法工具类
- * 漏桶算法：把水滴看成请求
+ * 令牌桶算法
  */
 @Slf4j
 public class LeakyBucket {
@@ -15,7 +14,7 @@ public class LeakyBucket {
     public final int tokenCapacity;
 
     /**
-     * 水滴的流出的速率 每1000毫秒流出1滴
+     *令牌放入速度
      */
     private final int rate;
 

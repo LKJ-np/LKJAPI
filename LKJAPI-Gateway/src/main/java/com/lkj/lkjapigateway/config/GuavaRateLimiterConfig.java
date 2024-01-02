@@ -11,7 +11,7 @@ public class GuavaRateLimiterConfig {
     @SuppressWarnings("UnstableApiUsage")
     @Bean
     public RateLimiter rateLimiter(){
-        /*每秒控制5个许可*/
+        //每秒放置20个令牌，即50ms向令牌桶放置一个令牌
         return RateLimiter.create(20);
     }
 }

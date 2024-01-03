@@ -13,14 +13,14 @@
 ## 项目介绍 🙋
 **😀 作为用户您可以通过注册登录账户，获取接口调用权限，并根据自己的需求浏览和选择适合的接口。您可以在线进行接口调试，快速验证接口的功能和效果。**
 
-**💻 作为开发者 我们提供了[客户端SDK: LKJAPI-SDK](xxx)，即可将轻松集成接口到您的项目中，实现更高效的开发和调用。**
+**💻 作为开发者 我们提供了[客户端SDK: LKJAPI-SDK](./LKJAPI-client-sdk)，即可将轻松集成接口到您的项目中，实现更高效的开发和调用。**
 
 **🏁 无论您是用户还是开发者，LKJAPI 接口开放平台都致力于提供稳定、安全、高效的接口调用服务，帮助您实现更快速、便捷的开发和调用体验。**
 ## 网站导航 🧭
 -  **[LKJAPI 接口开放平台 🔗](https://github.com/LKJ-np/LKJAPI)**
 - [**LKJAPI 后端 🏘️**](https://github.com/LKJ-np/LKJAPI)
-- [**LKJAPI 前端 🏘**️](XXX)
--  **[LKJAPI-SDK](XXX)** 🛠
+- [**LKJAPI 前端 🏘**️](https://github.com/LKJ-np/LKJAPI-frontend)
+-  **[LKJAPI-SDK](./LKJAPI-client-sdk)** 🛠
 
 ## 目录结构 📑
 | 目录                                                                                                                                                        | 描述           |
@@ -38,7 +38,7 @@
 
 ## 项目流程 🗺️
 
-![LKJAPI 接口开放平台](xxx)
+![LKJAPI 接口开放平台](./img/项目流程图.png)
 
 
 ## 快速启动 🚀

@@ -14,7 +14,10 @@ import java.util.HashMap;
 @RestController
 @RequestMapping("/random")
 public class RandomController {
-
+    /**
+     * 随机毒鸡汤
+     * @return
+     */
     @GetMapping("/word")
     public String getRandomWork(){
         HttpResponse response = HttpRequest.get("https://tenapi.cn/v2/yiyan")
@@ -22,6 +25,10 @@ public class RandomController {
         return response.body();
     }
 
+    /**
+     * 随机图片
+     * @return
+     */
     @PostMapping("/image")
     public String getRandomImageUrl(){
         HashMap<String, Object> paramMap = new HashMap<>();
@@ -32,5 +39,16 @@ public class RandomController {
         String body = response.body();
         ImageResponse imageResponse = JSONUtil.toBean(body, ImageResponse.class);
         return imageResponse.getData().getUrl();
+    }
+
+    /**
+     * 随机土味情话
+     * @return
+     */
+    @GetMapping("/loveword")
+    public String getRandomLove(){
+        HttpResponse response = HttpRequest.get("https://api.vvhan.com/api/love")
+                .execute();
+        return response.body();
     }
 }

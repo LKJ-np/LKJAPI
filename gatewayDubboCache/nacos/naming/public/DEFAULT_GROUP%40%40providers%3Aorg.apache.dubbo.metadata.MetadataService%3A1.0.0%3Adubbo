@@ -1,1 +1,1 @@
-{"name":"providers:org.apache.dubbo.metadata.MetadataService:1.0.0:dubbo","groupName":"DEFAULT_GROUP","clusters":"","cacheMillis":10000,"hosts":[],"lastRefTime":1704094177601,"checksum":"","allIPs":false,"reachProtectionThreshold":false,"valid":true}
+{"name":"providers:org.apache.dubbo.metadata.MetadataService:1.0.0:dubbo","groupName":"DEFAULT_GROUP","clusters":"","cacheMillis":10000,"hosts":[],"lastRefTime":1704288533570,"checksum":"","allIPs":false,"reachProtectionThreshold":false,"valid":true}

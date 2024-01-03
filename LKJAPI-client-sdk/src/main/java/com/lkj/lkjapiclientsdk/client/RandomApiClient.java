@@ -12,7 +12,7 @@ public class RandomApiClient extends CommonApiClient{
     }
 
     /**
-     * 获取随机文本
+     * 获取随机毒鸡汤
      * @return
      */
     public String getRandomWork(){
@@ -30,4 +30,14 @@ public class RandomApiClient extends CommonApiClient{
                 .addHeaders(getHeadMap("",accessKey,secretKey))
                 .execute().body();
     }
+
+    /**
+     *随机土味情话
+     */
+    public String getRandomLove(){
+        return HttpRequest.get(GATEWAY_HOST+"/api/interface/random/loveword")
+                .addHeaders(getHeadMap("",accessKey,secretKey))
+                .execute().body();
+    }
+
 }

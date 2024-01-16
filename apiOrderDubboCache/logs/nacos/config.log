@@ -2723,3 +2723,17 @@ com.alibaba.nacos.api.exception.NacosException: Client not connected, current st
 2024-01-03 21:20:24.359 INFO [Dubbo-framework-mapping-refreshing-scheduler-thread-2:c.a.n.c.c.i.CacheData] [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=com.lkj.apicommon.service.ApiBackendService, group=mapping, cnt=1
 2024-01-03 21:20:24.405 INFO [restartedMain:c.a.n.c.c.i.ClientWorker] [fixed-localhost_8848] [subscribe] org.apache.dubbo.metadata.MetadataService:1.0.0:dubbo.configurators+dubbo
 2024-01-03 21:20:24.405 INFO [restartedMain:c.a.n.c.c.i.CacheData] [fixed-localhost_8848] [add-listener] ok, tenant=, dataId=org.apache.dubbo.metadata.MetadataService:1.0.0:dubbo.configurators, group=dubbo, cnt=1
+2024-01-03 21:59:05.921 INFO [DubboShutdownHook:c.a.n.c.a.r.i.CredentialWatcher] [null] CredentialWatcher is stopped
+2024-01-03 21:59:05.922 INFO [DubboShutdownHook:c.a.n.c.a.r.i.CredentialService] [null] CredentialService is freed
+2024-01-03 21:59:06.029 INFO [com.alibaba.nacos.client.Worker:c.a.n.c.a.r.i.CredentialWatcher] null No credential found
+2024-01-03 21:59:06.924 INFO [DubboShutdownHook:c.a.n.c.c.i.ClientWorker] com.alibaba.nacos.client.config.impl.ClientWorker do shutdown begin
+2024-01-03 21:59:06.924 INFO [DubboShutdownHook:c.a.n.c.a.r.i.CredentialWatcher] [null] CredentialWatcher is stopped
+2024-01-03 21:59:06.924 INFO [DubboShutdownHook:c.a.n.c.a.r.i.CredentialService] [null] CredentialService is freed
+2024-01-03 21:59:06.924 INFO [DubboShutdownHook:c.a.n.c.c.i.ClientWorker] Trying to shutdown transport client com.alibaba.nacos.client.config.impl.ClientWorker$ConfigRpcTransportClient@2ce28e32
+2024-01-03 21:59:06.924 INFO [DubboShutdownHook:c.a.n.c.c.i.ClientWorker] Trying to shutdown rpc client 30f783b6-b9b7-4187-8cf8-94c3eb0661da_config-0
+2024-01-03 21:59:06.924 INFO [DubboShutdownHook:c.a.n.c.c.i.ClientWorker] Remove rpc client 30f783b6-b9b7-4187-8cf8-94c3eb0661da_config-0
+2024-01-03 21:59:06.924 INFO [DubboShutdownHook:c.a.n.c.c.i.ClientWorker] Shutdown executor java.util.concurrent.ScheduledThreadPoolExecutor@20e829f2[Running, pool size = 32, active threads = 1, queued tasks = 1, completed tasks = 467]
+2024-01-03 21:59:06.925 INFO [DubboShutdownHook:c.a.n.c.c.i.ClientWorker] com.alibaba.nacos.client.config.impl.ClientWorker do shutdown stop
+2024-01-03 21:59:07.269 INFO [com.alibaba.nacos.client.naming.security:c.a.n.c.a.r.i.CredentialWatcher] null No credential found
+2024-01-03 21:59:31.042 INFO [SpringApplicationShutdownHook:c.a.n.c.a.r.i.CredentialWatcher] [null] CredentialWatcher is stopped
+2024-01-03 21:59:31.042 INFO [SpringApplicationShutdownHook:c.a.n.c.a.r.i.CredentialService] [null] CredentialService is freed
